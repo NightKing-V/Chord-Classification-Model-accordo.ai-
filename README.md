@@ -104,7 +104,7 @@ If you use this code or research in your work, please cite:
   title        = {Accordo.ai: Deep Learning for Automated Chord Recognition},
   year         = {2025},
   publisher    = {GitHub},
-  url          = {https://github.com/yourusername/accordo-ai}
+  url          = {https://github.com/NightKing-V/Chord-Classification-Model-accordo.ai-.git}
 }
 ```
 ## Credits
