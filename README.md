@@ -77,28 +77,7 @@ cd accordo-ai
 # Create and activate a virtual environment (optional)
 docker-composer up --build -d
 
-## Usage
 
-Example for running inference with the trained M3 model:
-
-```python
-from src.models.model3 import CQTModel
-from src.features.extraction import extract_cqt_features
-import librosa
-
-# Load audio file
-audio, sr = librosa.load('path_to_audio.wav', sr=22050, mono=True)
-
-# Extract CQT features
-cqt_features = extract_cqt_features(audio, sr)
-
-# Load model
-model = CQTModel.load_model('models/model3/trained_model.h5')
-
-# Predict chord
-chord = model.predict(cqt_features)
-print(f"Predicted chord: {chord}")
-```
 
 ## Citation
 
