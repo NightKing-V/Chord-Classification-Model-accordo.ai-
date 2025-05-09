@@ -40,33 +40,6 @@ The project implements several data processing techniques:
 - **Data Augmentation**: Expanding dataset size through pitch shifting and noise
 - **Feature Engineering**: Converting chord labels to vectors and one-hot encodings
 
-## Repository Structure
-
-```
-accordo-ai/
-├── data/
-│   ├── raw/                # Raw audio files
-│   ├── processed/          # Processed feature files
-│   ├── mcgill_billboard/   # McGill Billboard dataset
-│   └── isophonics/         # Isophonics dataset
-├── models/
-│   ├── model1/             # Chroma single-output model
-│   ├── model2/             # Chroma multi-output model
-│   └── model3/             # CQT multi-output model
-├── notebooks/
-│   ├── data_preprocessing.ipynb
-│   ├── feature_extraction.ipynb
-│   ├── model_training.ipynb
-│   └── evaluation.ipynb
-├── src/
-│   ├── preprocessing/      # Data preprocessing scripts
-│   ├── features/           # Feature extraction scripts
-│   ├── models/             # Model definition scripts
-│   └── utils/              # Utility functions
-├── results/                # Evaluation results and figures
-└── requirements.txt        # Dependencies
-```
-
 ## Model Performance
 
 M3 demonstrated the highest overall performance among the three models, with better accuracy when evaluated against a test set. However, challenges remain with complex audio signals and rare chord types.
@@ -102,12 +75,7 @@ git clone https://github.com/yourusername/accordo-ai.git
 cd accordo-ai
 
 # Create and activate a virtual environment (optional)
-python -m venv env
-source env/bin/activate  # On Windows: env\Scripts\activate
-
-# Install dependencies
-pip install -r requirements.txt
-```
+docker-composer up --build -d
 
 ## Usage
 
