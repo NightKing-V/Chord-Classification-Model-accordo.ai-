@@ -82,15 +82,15 @@ docker-composer up --build -d
 ## Citation
 
 If you use this code or research in your work, please cite:
-
+```
 @misc{accordoai2025,
-  author = {Your Name},
-  title = {Accordo.ai: Deep Learning for Automated Chord Recognition},
-  year = {2025},
-  publisher = {GitHub},
-  url = {https://github.com/yourusername/accordo-ai}
+  author       = {Robalge Valenteno Lenora},
+  title        = {Accordo.ai: Deep Learning for Automated Chord Recognition},
+  year         = {2025},
+  publisher    = {GitHub},
+  url          = {https://github.com/yourusername/accordo-ai}
 }
-
+```
 ## License
 
 [MIT License](LICENSE)
