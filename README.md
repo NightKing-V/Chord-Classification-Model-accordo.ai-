@@ -119,6 +119,12 @@ music signals." Proceedings of the 11th International Conference on Digital Audi
 Effects (DAFx-08).
 ```
 
+## Implmentations
+```
+Music Analysis System (AndroidApp + Backend)
+https://github.com/NightKing-V/accordo.ai
+```
+
 ## License
 
 [MIT License](LICENSE)

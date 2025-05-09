@@ -1,0 +1,8 @@
+CQT 2 - Test Accuracy - Root: 57.12%, Bass: 61.01%, Triad: 30.40%, Fourth: 51.06%
+CQT 3 - Test Accuracy - Root: 61.30%, Bass: 65.71%, Triad: 35.40%, Fourth: 52.72%
+CQT 4 - Test Accuracy - Root: 53.03%, Bass: 60.53%, Triad: 32.07%, Fourth: 52.62%
+CQT 5 - Test Accuracy - Root: 36.74%, Bass: 48.71%, Triad: 20.22%, Fourth: 45.98%
+CQT 6 - Test Accuracy - Root: 51.19%, Bass: 60.19%, Triad: 18.43%, Fourth: 56.74%
+        Test Accuracy - Root: 64.48%, Bass: 70.33%, Triad: 19.58%, Fourth: 54.38%
+CQT 7 - Test Accuracy - Root: 45.13%, Bass: 55.25%, Triad: 15.34%, Fourth: 51.98%   
+Test Accuracy - Root: 68.87%, Bass: 73.99%, Triad: 24.29%, Fourth: 53.51%

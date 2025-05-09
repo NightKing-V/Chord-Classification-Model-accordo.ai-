@@ -1,0 +1,18 @@
+version: "3.8"
+
+services:
+  accordoai-jupyter:
+    image: accordoai-jupyter  # Use the image name from your Dockerfile build
+    build: .
+    container_name: accordoai_model
+    restart: unless-stopped
+    ports:
+      - "8888:8888"  # Expose Jupyter Notebook
+    deploy:
+      resources:
+        reservations:
+          devices:
+            - driver: nvidia
+              count: all
+              capabilities: [gpu]
+    command: ["jupyter", "lab", "--ip=0.0.0.0", "--allow-root", "--no-browser"]
