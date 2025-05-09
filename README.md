@@ -77,13 +77,12 @@ cd accordo-ai
 # Create and activate a virtual environment (optional)
 docker-composer up --build -d
 
-
+```
 
 ## Citation
 
 If you use this code or research in your work, please cite:
 
-```
 @misc{accordoai2025,
   author = {Your Name},
   title = {Accordo.ai: Deep Learning for Automated Chord Recognition},
@@ -91,7 +90,6 @@ If you use this code or research in your work, please cite:
   publisher = {GitHub},
   url = {https://github.com/yourusername/accordo-ai}
 }
-```
 
 ## License
 
