@@ -31,6 +31,23 @@ The research developed and evaluated three main models:
 - **Data Augmentation**: Pitch shifting (±5 semitones), Gaussian noise
 - **Additional Techniques**: Custom frequency weighting, batch normalization
 
+## Datasets
+
+```
+Burgoyne, J.A., Wild, J., & Fujinaga, I. (2011). An expert ground-truth set for audio 
+chord recognition and music analysis. Proceedings of the 12th International 
+Society for Music Information Retrieval Conference (ISMIR), 633–638. 
+(McGill Billboard dataset. https://www.kaggle.com/datasets/jacobvs/mcgill
+billboard) 
+ 
+Harte, C., Sandler, M., Abdallah, S., & Gómez, E. (2005). Symbolic representation 
+of musical chords: A proposed syntax for text annotations. Proceedings of the 6th 
+International Conference on Music Information Retrieval (ISMIR), 66–71. 
+(Isophonics dataset. http://isophonics.net/content/reference-annotations
+beatles) 
+
+```
+
 ## Data Processing
 
 The project implements several data processing techniques:
@@ -91,6 +108,18 @@ If you use this code or research in your work, please cite:
   url          = {https://github.com/yourusername/accordo-ai}
 }
 ```
+## Credits
+```
+Aslanidis, T. A. (2020). Deep Learning in Audio Chord Estimation (Bachelor's 
+thesis). Department of Informatics and Telecommunications, National and 
+Kapodistrian University of Athens.  (https://github.com/taslanidis/Audio-Chord
+Recognition) 
+
+Harte, C. A. (2010). "Towards automatic extraction of harmony information from 
+music signals." Proceedings of the 11th International Conference on Digital Audio 
+Effects (DAFx-08).
+```
+
 ## License
 
 [MIT License](LICENSE)
