@@ -1,0 +1,1 @@
+1. reaearch model, isotophes, tr 0.8, v 0.125, te 0.125, slice 300, batch 64, epoch 50, rare 0.1
