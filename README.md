@@ -88,8 +88,7 @@ Main dependencies include:
 
 ```bash
 # Clone the repository
-git clone https://github.com/yourusername/accordo-ai.git
-cd accordo-ai
+git clone https://github.com/NightKing-V/Chord-Classification-Model-accordo.ai-.git
 
 # Create and activate a virtual environment (optional)
 docker-composer up --build -d
