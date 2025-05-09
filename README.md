@@ -1,37 +1,43 @@
-# Chord-Classification-Model-accordo.ai
+# 🎼 Chord-Classification-Model-Accordo.ai
 
-## Deep Learning for Automated Chord Recognition
+## 🤖 Deep Learning for Automated Chord Recognition
 
-This repository contains the research and implementation of deep learning models for real-time chord analysis and recognition, developed as part of the Accordo.ai project.
+This repository contains the research and implementation of deep learning models for real-time chord analysis and recognition, developed as part of the **Accordo.ai** project.
 
-## Project Overview
+---
 
-Accordo.ai is a system designed to provide real-time chord recognition from audio input. The project explores several deep learning approaches to accurately identify musical chords from audio signals, breaking down chord components into root notes, bass notes, triads, and fourth notes.
+## 📌 Project Overview
 
-## Models
+**Accordo.ai** is a system designed to provide real-time chord recognition from audio input. The project explores several deep learning approaches to accurately identify musical chords from audio signals, breaking down chord components into **root notes**, **bass notes**, **triads**, and **fourth notes**.
 
-The research developed and evaluated three main models:
+---
 
-### M1: Chroma-based Single Output Layer Model
-- **Dataset**: McGill Billboard dataset
-- **Features**: 12 chroma features
-- **Architecture**: Bi-LSTM with single output layer
-- **Purpose**: Initial research and experimentation
+## 🧠 Models
 
-### M2: Chroma-based Multi-Output Layer Model
-- **Dataset**: Isophonics dataset (The Beatles)
-- **Features**: 12 chroma features
-- **Architecture**: Bi-LSTM with four output layers (root, bass, triad, fourth)
-- **Data Augmentation**: Pitch shifting (±3 semitones)
+Three main models were developed and evaluated:
 
-### M3: CQT-based Multi-Output Layer Model
-- **Dataset**: Isophonics dataset (The Beatles)
-- **Features**: 192 CQT features (24 bins per octave for 8 octaves)
-- **Architecture**: Bi-LSTM with four output layers (root, bass, triad, fourth)
-- **Data Augmentation**: Pitch shifting (±5 semitones), Gaussian noise
-- **Additional Techniques**: Custom frequency weighting, batch normalization
+### 🎶 M1: Chroma-based Single Output Layer Model
+- 📚 **Dataset**: McGill Billboard
+- 🎛 **Features**: 12 chroma features
+- 🧩 **Architecture**: Bi-LSTM with single output layer
+- 🧪 **Purpose**: Initial experimentation
 
-## Datasets
+### 🎶 M2: Chroma-based Multi-Output Layer Model
+- 📚 **Dataset**: Isophonics (The Beatles)
+- 🎛 **Features**: 12 chroma features
+- 🧩 **Architecture**: Bi-LSTM with four output layers (root, bass, triad, fourth)
+- 🧬 **Augmentation**: Pitch shifting (±3 semitones)
+
+### 🎶 M3: CQT-based Multi-Output Layer Model
+- 📚 **Dataset**: Isophonics (The Beatles)
+- 🎛 **Features**: 192 CQT features (24 bins/octave × 8 octaves)
+- 🧩 **Architecture**: Bi-LSTM with four output layers (root, bass, triad, fourth)
+- 🧬 **Augmentation**: Pitch shifting (±5 semitones), Gaussian noise
+- ⚙️ **Extras**: Custom frequency weighting, batch normalization
+
+---
+
+## 🗃️ Datasets
 
 ```
 Burgoyne, J.A., Wild, J., & Fujinaga, I. (2011). An expert ground-truth set for audio 
@@ -47,55 +53,59 @@ International Conference on Music Information Retrieval (ISMIR), 66–71.
 beatles) 
 
 ```
+## ⚙️ Data Processing Pipeline
 
-## Data Processing
+- 🔍 **Feature Extraction**: Librosa (chroma & CQT)
+- 🎼 **Chord Standardization**: Enharmonic correction, consistent labeling
+- 🔁 **Stratified Splitting**: Balanced training/validation/test splits
+- 🧬 **Augmentation**: Pitch shifting, noise injection
+- 🧠 **Vectorization**: One-hot encoding of chord components
 
-The project implements several data processing techniques:
-- **Feature Extraction**: Using librosa for chroma and CQT features
-- **Chord Standardization**: Handling enharmonic equivalents and inconsistent labeling
-- **Stratified Splitting**: Ensuring rare chords are represented in all data splits
-- **Data Augmentation**: Expanding dataset size through pitch shifting and noise
-- **Feature Engineering**: Converting chord labels to vectors and one-hot encodings
+---
 
-## Model Performance
+## 📈 Model Performance
 
-M3 demonstrated the highest overall performance among the three models, with better accuracy when evaluated against a test set. However, challenges remain with complex audio signals and rare chord types.
+Model **M3** showed the highest accuracy in testing and generalization. However, recognition of rare chords and noisy signals remains a challenge for all models.
 
-## Limitations and Future Work
+---
 
-- **Data Limitations**: More varied training data across genres is needed
-- **Computational Resources**: Higher computing power for more complex models
-- **Chord Complexity**: Difficulty in recognizing complex or rare chord combinations
-- **Multi-Output Sensitivity**: Small errors in one output affect the entire chord prediction
+## ⚠️ Limitations & 🚀 Future Work
 
-Future improvements would focus on:
-1. Expanding the training dataset with more diverse musical genres
-2. Implementing more robust post-processing algorithms
-3. Exploring alternative neural network architectures
-4. Optimizing for real-time performance
+- 🔎 Need for more diverse genre datasets
+- 💻 High computational requirements for training
+- 🎶 Difficulty with complex or ambiguous chords
+- ⚖️ Sensitivity in multi-output predictions
 
-## Dependencies
+**Planned improvements:**
+1. Expanding dataset coverage
+2. Enhancing post-processing logic
+3. Exploring new model architectures (e.g., Transformers)
+4. Real-time inference optimization
 
-Main dependencies include:
-- TensorFlow/Keras
-- Librosa
-- NumPy
-- Pandas
-- Matplotlib
-- h5py
+---
 
-## Installation
+## 🧰 Dependencies
+
+- TensorFlow / Keras  
+- Librosa  
+- NumPy  
+- Pandas  
+- Matplotlib  
+- h5py  
+
+---
+
+## 🚀 Installation
 
 ```bash
 # Clone the repository
 git clone https://github.com/NightKing-V/Chord-Classification-Model-accordo.ai-.git
 
-# Create and activate a virtual environment (optional)
-docker-composer up --build -d
+# Start services using Docker Compose
+docker-compose up --build -d
 
 ```
-
-## Citation
+## 🔖 Citation
 
 If you use this code or research in your work, please cite:
 ```
@@ -107,7 +117,7 @@ If you use this code or research in your work, please cite:
   url          = {https://github.com/NightKing-V/Chord-Classification-Model-accordo.ai-.git}
 }
 ```
-## Credits
+## 🙌 Credits
 ```
 Aslanidis, T. A. (2020). Deep Learning in Audio Chord Estimation (Bachelor's 
 thesis). Department of Informatics and Telecommunications, National and 
@@ -119,12 +129,20 @@ music signals." Proceedings of the 11th International Conference on Digital Audi
 Effects (DAFx-08).
 ```
 
-## Implmentations
+## 📱 Implmentations
 ```
 Music Analysis System (AndroidApp + Backend)
 https://github.com/NightKing-V/accordo.ai
 ```
 
-## License
+## 👨‍🎓 About the Author & Project Motivation
+
+This research project was developed by Robalge Valenteno Lenora as part of the final year requirements for the BSc (Hons) Computer Science degree at the University of Plymouth.
+
+Supervised by Dr. Mohamed Shafraz, the project explores how deep learning techniques can be applied to automate musical chord recognition and beat analysis — a task traditionally done manually or using rule-based systems. The motivation behind Accordo.ai stems from a passion for music and artificial intelligence, with a desire to bridge both fields to build intelligent tools for musicians, learners, and researchers.
+
+This work not only contributes to the field of music information retrieval (MIR) but also demonstrates real-world application of modern AI engineering practices, including microservice architecture, containerization, and scalable machine learning deployment.
+
+## 📜 License
 
 [MIT License](LICENSE)
