@@ -98,6 +98,9 @@ Model **M3** showed the highest accuracy in testing and generalization. However,
 ## 🚀 Installation
 
 ```bash
+# python library
+pip install accordoai
+
 # Clone the repository
 git clone https://github.com/NightKing-V/Chord-Classification-Model-accordo.ai-.git
 
