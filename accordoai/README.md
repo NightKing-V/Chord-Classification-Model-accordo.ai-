@@ -104,8 +104,6 @@ pip install accordoai
 # Clone the repository
 git clone https://github.com/NightKing-V/Chord-Classification-Model-accordo.ai-.git
 
-# Start services using Docker Compose
-docker-compose up --build -d
 
 ```
 ## 🔖 Citation
