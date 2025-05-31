@@ -1,8 +1,10 @@
-import tensorflow as tf
+from importlib.resources import files
+from keras.models import load_model
+
 
 
 def load():
-    # Load the trained model
-    model_path = 'models/'
-    model = tf.keras.models.load_model(model_path, compile=False)
+    model_path = files("accordoai.models").joinpath("model.keras")
+    print(f"[accordoai] Loading model...")
+    model = load_model(str(model_path))
     return model

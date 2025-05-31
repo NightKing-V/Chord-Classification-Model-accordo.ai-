@@ -5,8 +5,9 @@ with open("README.md", encoding="utf-8") as f:
 
 setup(
     name="accordoai",
-    version="0.1.1",
+    version="0.2.7",
     packages=find_packages(),
+    include_package_data=True,
     install_requires=[
         "tensorflow>=2.0.0",
         "numpy",
@@ -16,8 +17,7 @@ setup(
         "pandas",
         "scipy",
         "numpy",
-        "moviepy",
-        "collections",
+        "moviepy"
     ],
     author="Valenteno Lenora",
     author_email="valentenocavlenora@gmail.com",

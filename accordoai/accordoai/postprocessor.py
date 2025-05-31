@@ -1,15 +1,17 @@
 import numpy as np
 import pandas as pd
-from config import get_config, get_chords
+from .config import get_config, get_chords
 from scipy import stats
 from collections import Counter
 from music21 import chord
+from importlib.resources import files
 
 config = get_config()
 slice_size = config['SLICE_SIZE']
 hops = config['HOP_LENGTH']
 sr = config['SAMPLE_RATE']
-chord_vocab_file = config['VOCAB_PATH']
+
+chord_vocab_file = files("accordoai.resources").joinpath("vocab.csv")
 
 # Chromatic scale in terms of semitone steps from C
 chromatic_scale = ["C", "C#", "D", "D#", "E", "F", "F#", "G", "G#", "A", "A#", "B"]
@@ -23,8 +25,9 @@ ENHARMONIC_FLATS = {
     'E#': 'F'
 }
 
-def postprocess(df, beats, tempo, duration):
+def postprocess(df, duration, beats = None, tempo = None):
     try:
+        print("[accordoai] Starting postprocessing...")
         # Step 1: Get chords with labels
         chords = vector_to_chord(df)
 
@@ -64,22 +67,16 @@ def vector_to_chord(chordsdf):
 
     def process_row(row):
         try:
-            # Extract indices
-            root_idx = row['root']
-            bass_idx = row['bass']
-            triad_idx = row['triad']
-            fourth_idx = row['fourth']
-            
-            # Validate and correct the vector
-            vector = validate_and_correct_chord_vector([root_idx, bass_idx, triad_idx, fourth_idx])
-            root_idx, bass_idx, triad_idx, fourth_idx = vector
-            
+            # Extract indices from the chord_vector column
+            vector = row['Chord_vector']
+            root_idx, bass_idx, triad_idx, fourth_idx = validate_and_correct_chord_vector(vector)
+
             # Map indices to names
             root_val = roots[root_idx]
             bass_val = basses[bass_idx]
             triad_val = triads[triad_idx]
             fourth_val = fourths[fourth_idx]
-            
+
             # Match with chord vocabulary
             chord_row = chord_vocab_df[
                 (chord_vocab_df['root'] == root_val) &
@@ -87,12 +84,12 @@ def vector_to_chord(chordsdf):
                 (chord_vocab_df['triad'] == triad_val) &
                 (chord_vocab_df['fourth'] == fourth_val)
             ]
-            
+
             if chord_row.empty:
-                return 'N'  # Return 'N' for unknown chords
+                return 'N'  # Unknown chord
             else:
                 return chord_row['chord_name'].values[0]
-        
+
         except Exception as e:
             raise ValueError(f"[accordoai] Error processing row: {str(e)}")
 
@@ -395,7 +392,7 @@ def get_chord_label_frequencies(df):
 def handle_outlier_chords_by_label(df, freq_counter, threshold=20, min_consecutive=2, w=5):
     chord_list = df['chord_label'].tolist()
     length = len(chord_list)
-    print(freq_counter)
+    # print(freq_counter)
 
     def is_rare(label):
         return freq_counter.get(label, 0) <= threshold

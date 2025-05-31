@@ -6,7 +6,6 @@ def get_config():
         "BINS_PER_OCT" : 24,
         "SLICE_SIZE" : 300,
         "MONO": True,
-        "VOCAB_PATH" : "resources/vocab.csv",
     }
 
 def get_chords():

@@ -7,4 +7,3 @@ pandas
 scipy
 numpy
 moviepy
-collections

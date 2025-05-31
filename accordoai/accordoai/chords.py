@@ -13,9 +13,9 @@ class ChordPredictor:
             if not os.path.exists(file_path):
                 raise FileNotFoundError(f"[accordoai] Incorrect file path: {file_path}")
 
-            features, duration = preprocess(file_path)
-            vectors = predict(self.model, features)
-            chords = postprocess(vectors, duration)
+            features, duration = preprocess(path=file_path)
+            vectors = predict(model=self.model, features=features)
+            chords = postprocess(df=vectors, duration=duration)
 
             return chords
 
@@ -24,9 +24,4 @@ class ChordPredictor:
             return None
 
         finally:
-            try:
-                if os.path.exists(file_path):
-                    os.remove(file_path)
-                    print(f"[accordoai] Deleted processed file: {file_path}")
-            except Exception as e:
-                print(f"[accordoai] Failed to delete file: {e}")
+            print("[accordoai] Prediction completed.")

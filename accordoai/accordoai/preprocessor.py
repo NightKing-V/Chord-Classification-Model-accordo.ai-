@@ -2,14 +2,15 @@ import os
 import librosa
 import numpy as np
 from moviepy.audio.io.AudioFileClip import AudioFileClip
-from config import get_config
+from .config import get_config
 import filetype
 import os
 # from pathlib import Path
 # import shutil
 
 # Function to preprocess audio file and extract features
-async def preprocess(path):
+def preprocess(path):
+    print(f"[accordoai] Starting preprocessing...")
     try:
         config = get_config()
         sr = config['SAMPLE_RATE']
@@ -18,9 +19,9 @@ async def preprocess(path):
         mono = config['MONO']
         hops = config['HOP_LENGTH']
 
-        saved_file, duration = await convet_to_wav(path)
+        saved_file, duration = convet_to_wav(path)
         
-        cqt, time = await feature_extraction(saved_file, sr, bins, mono, hops, slice_size)
+        cqt, time = feature_extraction(saved_file, sr, bins, mono, hops, slice_size)
         # beats, tempo = await detect_beats(saved_file)
         
         print(f"[accordoai] Preprocessed CQT shape: {cqt.shape}, Time shape: {time.shape}")
@@ -41,32 +42,17 @@ async def preprocess(path):
 
 
 # Function to convert audio file to WAV format
-async def convet_to_wav(song_path):
+def convet_to_wav(song_path):
     try:
-        matching_files = [f for f in os.listdir(song_path) if id in f]
-        
-        if not matching_files:
-            raise Exception("[accordoai] File Missing")
-        
-        file = matching_files[0]
-
-        if await is_valid_audio_file(file):
-            filename = os.path.splitext(os.path.basename(file))[0]
-            new_song = os.path.join(song_path, f"{filename}_conv.wav")
-            original_file_path = os.path.join(song_path, file)
-            audio = AudioFileClip(original_file_path)
+        directory_path = os.path.dirname(song_path)
+        file = os.path.basename(song_path) # Assuming the first file is the one to convert
+        filename = os.path.splitext(file)[0]
+        if is_valid_audio_file(file):
+            new_song = os.path.join(directory_path, f"{filename}_conv.wav")
+            audio = AudioFileClip(song_path)
             duration = audio.duration
-            audio.write_audiofile(new_song)
-            print(f"[accordoai] Converted {file} to {new_song}")
-            
-            # if os.path.exists(original_file_path):
-            #     os.remove(original_file_path)
-
-            # # Delete the parent folder
-            # parent_folder = Path(original_file_path).parent
-            # if parent_folder.exists() and parent_folder.is_dir():
-            #     shutil.rmtree(parent_folder)
-            # print(f"Deleted old file: {file}")
+            audio.write_audiofile(new_song, logger=None)
+            print(f"[accordoai] Converted {song_path} to {new_song}")
             
             return new_song, duration
         else:
@@ -76,7 +62,7 @@ async def convet_to_wav(song_path):
 
 
 # Function to extract features from audio file
-async def feature_extraction(file_path, sample_rate, bins, mono, hops, slice):
+def feature_extraction(file_path, sample_rate, bins, mono, hops, slice):
     try:
         y, sr = librosa.load(file_path, sr=sample_rate, mono=mono)
         cqt = librosa.cqt(y, sr=sr, hop_length=2048, bins_per_octave=bins, n_bins=(bins*8))
@@ -96,7 +82,7 @@ async def feature_extraction(file_path, sample_rate, bins, mono, hops, slice):
         timestamps = np.round(timestamps, 4)
 
         cqt_array = cqt.T
-        reshaped_array = await restructure(cqt_array, slice, bins)
+        reshaped_array = restructure(cqt_array, slice, bins)
             
         print(f"[accordoai] Extracted features from {file_path}")
         return reshaped_array, timestamps
@@ -106,7 +92,7 @@ async def feature_extraction(file_path, sample_rate, bins, mono, hops, slice):
 
 
 # Function to restructure the extracted features
-async def restructure(data_array, seq_length, bins):
+def restructure(data_array, seq_length, bins):
     try:
         num_rows = data_array.shape[0]
         num_columns = bins * 8
@@ -129,7 +115,7 @@ async def restructure(data_array, seq_length, bins):
 
 
 
-async def get_file_extension(file_bytes):
+def get_file_extension(file_bytes):
     kind = filetype.guess(file_bytes)
 
     if not kind:
@@ -168,13 +154,13 @@ async def get_file_extension(file_bytes):
 
 
 # Function to detect valid audio file extensions
-async def is_valid_audio_file(file):
+def is_valid_audio_file(file):
     valid_extensions = ('.mp3', '.flac', '.wav', '.ogg', '.aac', '.wma', '.m4a', '.webm')
     return file.endswith(valid_extensions)
     
     
 # Function to detect beats in an audio file
-async def detect_beats(audio_path):
+def detect_beats(audio_path):
     try:
         # Load the audio file
         y, sr = librosa.load(audio_path)

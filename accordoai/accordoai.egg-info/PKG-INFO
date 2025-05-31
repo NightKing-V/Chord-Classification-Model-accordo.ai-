@@ -1,6 +1,6 @@
 Metadata-Version: 2.4
 Name: accordoai
-Version: 0.1.1
+Version: 0.2.7
 Summary: Chord prediction model from Accordo.ai
 Home-page: https://github.com/NightKing-V/Chord-Classification-Model-accordo.ai-
 Author: Valenteno Lenora
@@ -20,7 +20,6 @@ Requires-Dist: pandas
 Requires-Dist: scipy
 Requires-Dist: numpy
 Requires-Dist: moviepy
-Requires-Dist: collections
 Dynamic: author
 Dynamic: author-email
 Dynamic: classifier
@@ -138,8 +137,6 @@ pip install accordoai
 # Clone the repository
 git clone https://github.com/NightKing-V/Chord-Classification-Model-accordo.ai-.git
 
-# Start services using Docker Compose
-docker-compose up --build -d
 
 ```
 ## 🔖 Citation
