@@ -1,4 +1,5 @@
 # 🎼 Chord-Classification-Model-Accordo.ai
+"Deep Learning Model and PIPY for Automated Chord Recognition"
 
 ## 🤖 Deep Learning for Automated Chord Recognition
 
