@@ -1,6 +1,3 @@
-# EduAgent
-“EduAgent: AI-powered Research &amp; Exam Assistant”
-
 # 🎼 Chord-Classification-Model-Accordo.ai
 
 ## 🤖 Deep Learning for Automated Chord Recognition
